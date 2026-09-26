@@ -22,6 +22,18 @@ class StudentClass:
         self.parent_mobile_number = ""
         self.parent_email_address = ""
         self.preferred_communication_method = ""
+
+    def collect_basic_details(self):
+        
+        self.full_name = input("enter your full name")
+        self.date_of_birth = input("enter your date of birth")
+        self.gender = input("enter your gender")
+        self.preferred_language = input("enter your preferred language")
+        self.school_college_name = input("enter your school/college name")
+        self.class_grade = input("enter your class/grade")
+        self.board_curriculum = input("enter your board/curriculum")
+        self.academic_year = input("enter your academic year")
+
     def setusername(self, email,password):
         self.email_address = email
         self.password = password
