@@ -33,7 +33,24 @@ class StudentClass:
         self.class_grade = input("enter your class/grade")
         self.board_curriculum = input("enter your board/curriculum")
         self.academic_year = input("enter your academic year")
-
-    def setusername(self, email,password):
+    def setusernameandpassword(self, email,password):
         self.email_address = email
         self.password = password
+
+    def save_basic_detailstodb(self):
+        import sqlite3
+        # Create/connect to database
+        conn = sqlite3.connect("tution.db")
+
+        # Create a cursor
+        cursor = conn.cursor()
+
+        #insert student details into the database
+        cursor.execute(""" 
+            INSERT INTO students (full_name, date_of_birth, age, gender, mobile_number, email_address, preferred_language, school_college_name, class_grade, board_curriculum, academic_year)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (self.full_name, self.date_of_birth, self.age, self.gender, self.mobile_number, self.email_address, self.preferred_language, self.school_college_name, self.class_grade, self.board_curriculum, self.academic_year),
+        )
+
+        conn.commit()
+        conn.close()
